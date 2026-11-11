@@ -119,9 +119,6 @@ function getInput(name, options) {
  * @param {any} data
  */
 function renderFiles(files, data) {
-  core.debug(
-    `rendering value files [${files.join(",")}] with: ${JSON.stringify(data)}`
-  );
   const tags = ["${{", "}}"];
   const promises = files.map(async file => {
     const content = await readFile(file, { encoding: "utf8" });
@@ -177,11 +174,9 @@ async function run() {
     core.debug(`param: namespace = "${namespace}"`);
     core.debug(`param: chart = "${chart}"`);
     core.debug(`param: chart_version = "${chartVersion}"`);
-    core.debug(`param: values = "${values}"`);
     core.debug(`param: dryRun = "${dryRun}"`);
     core.debug(`param: task = "${task}"`);
     core.debug(`param: version = "${version}"`);
-    core.debug(`param: secrets = "${JSON.stringify(secrets)}"`);
     core.debug(`param: valueFiles = "${JSON.stringify(valueFiles)}"`);
     core.debug(`param: removeCanary = ${removeCanary}`);
     core.debug(`param: timeout = "${timeout}"`);
